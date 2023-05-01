@@ -10,7 +10,13 @@ const Stack = createNativeStackNavigator();
 const AuthContext = React.createContext();
 
 function HomeScreen() {
-  return <Text>Hello Home</Text>;
+  const { signOut } = React.useContext(AuthContext);
+  return (
+    <View>
+      <Text>Hello Home</Text>
+      <Button title="Logout" onPress={() => signOut()} />
+    </View>
+  );
 }
 
 function LoginScreen() {
