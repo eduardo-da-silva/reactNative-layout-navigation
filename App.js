@@ -26,7 +26,7 @@ function LoginScreen() {
   const { signIn } = React.useContext(AuthContext);
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         placeholder="Username"
         value={username}
@@ -93,7 +93,6 @@ export default function App() {
   const authContext = React.useMemo(
     () => ({
       signIn: async (data) => {
-        alert('oi');
         dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
       },
       signOut: () => dispatch({ type: 'SIGN_OUT' }),
@@ -111,7 +110,11 @@ export default function App() {
           {state.loggedIn ? (
             <Stack.Screen name="Home" component={HomeScreen} />
           ) : (
-            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen
+              name="Login"
+              component={LoginScreen}
+              options={{ headerShown: false }}
+            />
           )}
         </Stack.Navigator>
         <StatusBar style="auto" />
