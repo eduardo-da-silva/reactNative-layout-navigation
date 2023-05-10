@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "axios": "^1.4.0",
     "expo": "~48.0.15",
     "expo-secure-store": "~12.1.1",
     "expo-status-bar": "~1.4.4",

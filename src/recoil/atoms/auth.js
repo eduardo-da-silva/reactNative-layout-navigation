@@ -5,6 +5,7 @@ export const userState = atom({
   default: {
     isLoading: true,
     loggedIn: false,
-    userToken: null,
+    access_token: null,
+    refresh_token: null,
   },
 });
