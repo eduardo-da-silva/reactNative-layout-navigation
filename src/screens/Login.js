@@ -2,7 +2,7 @@ import React from 'react';
 import * as SecureStore from 'expo-secure-store';
 
 import { useSetRecoilState } from 'recoil';
-import { StyleSheet, Button, TextInput, View } from 'react-native';
+import { StyleSheet, Button, Text, TextInput, View } from 'react-native';
 
 import { userState } from '../recoil/atoms/auth';
 import LoginApi from '../api/login';
@@ -14,6 +14,7 @@ export default function LoginScreen() {
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [errorMsg, setErrorMsg] = React.useState(null);
 
   const login = async () => {
     try {
@@ -26,6 +27,7 @@ export default function LoginScreen() {
       await SecureStore.setItemAsync('access_token', data.access_token);
     } catch (error) {
       setUser({ loggedIn: false, access_token: null, refresh_token: null });
+      setErrorMsg('Usuário ou senha inválidos!');
       await SecureStore.deleteItemAsync('access_token');
     }
   };
@@ -44,6 +46,7 @@ export default function LoginScreen() {
         secureTextEntry
       />
       <Button title="Sign in" onPress={() => login()} />
+      <Text>{errorMsg}</Text>
     </View>
   );
 }

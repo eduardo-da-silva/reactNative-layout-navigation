@@ -18,7 +18,7 @@ export default function Main() {
 
   React.useEffect(() => {
     const bootstrapAsync = async () => {
-      access_token = null;
+      let access_token = null;
       try {
         access_token = await SecureStore.getItemAsync('access_token');
       } catch (e) {
